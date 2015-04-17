@@ -11,7 +11,7 @@
 
     .node text {
       pointer-events: none;
-      font: 10px sans-serif;
+      font: sans-serif;
     }
 
     </style>
@@ -21,8 +21,8 @@
 
 <script>
 
-var width = 1200,
-    height = 900,
+var width = window.innerWidth - 20 || document.body.clientWidth - 20,
+    height = window.innerHeight - 20 || document.body.clientHeight - 20,
     fill = d3.scale.category20();
 
 var svg = d3.select("body").append("svg")
@@ -63,6 +63,7 @@ d3.json("force.json", function(json) {
   node.append("text")
       .attr("dx", 12)
       .attr("dy", ".35em")
+      .attr("font-size", function(d) { var size = d.size; return size.toString() +"px"; })
       .text(function(d) { return d.id });
       //.text(function(d) { return d.id + d.rank });
 
