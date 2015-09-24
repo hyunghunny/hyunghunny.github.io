@@ -29,7 +29,7 @@ function drawMap() {
     };
     markers.push(marker);
   }
-  var centerCood = transCoordList[0];
+  var centerCood = transCoordList[3];
 
   var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div
       staticMapOption = {
