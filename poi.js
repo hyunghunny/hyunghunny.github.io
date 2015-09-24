@@ -24,17 +24,19 @@ function drawMap() {
   for (var i = 0; i < transCoordList.length; i++) {
     var cood = transCoordList[i];
     var marker = {
-        position: new daum.maps.LatLng(cood.lat, cood.lng),
-        text: "POI" // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다
+        position: new daum.maps.LatLng(cood.lat, cood.lng)
     };
+    if (cood.title) {
+      marker.text = cood.title;
+    }
     markers.push(marker);
   }
-  var centerCood = transCoordList[3];
+  var centerCood = transCoordList[0];
 
   var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div
       staticMapOption = {
           center: new daum.maps.LatLng(centerCood.lat, centerCood.lng), // 이미지 지도의 중심좌표
-          level: 4, // 이미지 지도의 확대 레벨
+          level: 3, // 이미지 지도의 확대 레벨
           marker: markers // 이미지 지도에 표시할 마커
       };
 
@@ -43,7 +45,41 @@ function drawMap() {
 
 }
 var poiLength = 0;
-function transCoordAll() {
+var currentPoi = {};
+function transCoordSync() {
+  var poi = poiList.pop();
+  var wtmX = poi.LATITUDE;
+  var wtmY = poi.LONGITUDE;
+  var title = poi.TITLE;
+
+  currentPoi.title = title;
+
+  console.log(wtmX + ':' + wtmY);
+  var geocoder = new daum.maps.services.Geocoder();
+  geocoder.transCoord(wtmX,
+                      wtmY,
+                      daum.maps.services.Coords.WTM, // 변환을 위해 입력한 좌표계 입니다
+                      daum.maps.services.Coords.WGS84, // 변환 결과로 받을 좌표계 입니다
+                      function (status, result) {
+                        if (status === daum.maps.services.Status.OK) {
+                          console.log('lat:' + result.y + ', lng:' + result.x);
+                          // TODO:how to join transCoordindate into original?
+                          transCoordList.push({'lat': result.y, 'lng': result.x, 'title': currentPoi.title});
+                        } else {
+                          console.log(status);
+                        }
+
+                        if (poiList.length != 0) {
+                          transCoordSync();
+                        } else {
+                          drawMap();
+                        }
+
+                      });
+}
+
+
+function transCoordAsync() {
 
   poiLength = poiList.length;
 
@@ -98,5 +134,6 @@ invokeOpenAPI(travelAPI, function(data) {
     }
 
   }
-  transCoordAll();
+  //transCoordAsync();
+  transCoordSync();
 })
