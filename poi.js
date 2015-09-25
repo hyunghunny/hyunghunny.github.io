@@ -50,9 +50,10 @@ var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니�
 
       // 인포윈도우를 생성합니다
       var infowindow = new daum.maps.InfoWindow({
-          content : cood.contents
+          content : cood.contents,
+          removable: true
       });
-
+/*
       // 마커에 마우스오버 이벤트를 등록합니다
       daum.maps.event.addListener(marker, 'mouseover', function() {
         // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
@@ -64,6 +65,13 @@ var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니�
           // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
           infowindow.close();
       });
+*/
+      // 마커에 클릭 이벤트를 등록합니다
+      daum.maps.event.addListener(marker, 'click', function() {
+        // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+          infowindow.open(map, marker);
+      });
+
     }(cood);
   }
 }
