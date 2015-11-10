@@ -1,4 +1,4 @@
-var travelAPI = 'http://openapi.seoul.go.kr:8088/6a57584d7877656234337941446e76/json/BukChonSpaceVisitKo/0/56';
+var travelAPI = 'http://openapi.seoul.go.kr:8088/6a57584d7877656234337941446e76/json/BukChonSpaceVisitKo/0/623';
 var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
 function invokeOpenAPI(url, scb) {
@@ -60,8 +60,10 @@ function drawMap() {
 
 
       // 마커 이미지의 이미지 크기 입니다
-      var imageSize = new daum.maps.Size(24, 35);
-
+      //var imageSize = new daum.maps.Size(24, 35);
+      var imageSize = new daum.maps.Size(35, 35);
+      imageSrc = './img/' + cood.category + '.png';
+      console.log(imageSrc);
       // 마커 이미지를 생성합니다
       var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
 
@@ -78,7 +80,7 @@ function drawMap() {
           content : cood.contents,
           removable: true
       });
-/*
+
       // 마커에 마우스오버 이벤트를 등록합니다
       daum.maps.event.addListener(marker, 'mouseover', function() {
         // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
@@ -90,13 +92,13 @@ function drawMap() {
           // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
           infowindow.close();
       });
-*/
+/*
       // 마커에 클릭 이벤트를 등록합니다
       daum.maps.event.addListener(marker, 'click', function() {
         // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
           infowindow.open(map, marker);
       });
-
+*/
     }(cood);
   }
 }
@@ -136,9 +138,13 @@ function transCoordSync() {
   var wtmX = poi.LATITUDE;
   var wtmY = poi.LONGITUDE;
   var title = poi.TITLE;
+  var category = poi.CATE_SPACE;
 
-  currentPoi.title = poi.TITLE;
-  currentPoi.contents = '<div style="padding:5px; width: 300px;float:left; white-break:normal; font-size:small;">' + poi.CONTENTS + '</div>';
+  currentPoi.title = title;
+  currentPoi.contents = '<div style="padding:5px; width: 300px;float:left; white-break:normal; font-size:small;">' + 
+  '[' + category + ']' + '<br>' + 
+  poi.TITLE+ '</div>';
+  currentPoi.category = category;
 
   //console.log(wtmX + ':' + wtmY);
   var geocoder = new daum.maps.services.Geocoder();
@@ -153,6 +159,7 @@ function transCoordSync() {
                           transCoordList.push({
                             'lat': result.y, 'lng': result.x,
                           'title': currentPoi.title,
+                          'category' : currentPoi.category,
                           'contents' : currentPoi.contents});
                         } else {
                           console.log(status);
