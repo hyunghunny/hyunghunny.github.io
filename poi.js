@@ -147,7 +147,11 @@ function transCoordSync() {
   currentPoi.category = category;
 
   //console.log(wtmX + ':' + wtmY);
-  var geocoder = new daum.maps.services.Geocoder();
+  var geocoder = null;
+  try {
+    geocoder = new daum.maps.services.Geocoder();
+
+  alert('좌표 체계를 변환하여 지도에 표기하는 중입니다... 조금만 기다려 주세요.');
   geocoder.transCoord(wtmX,
                       wtmY,
                       daum.maps.services.Coords.WTM, // 변환을 위해 입력한 좌표계 입니다
@@ -171,7 +175,12 @@ function transCoordSync() {
                           drawMap();
                         }
 
-                      });
+                      });    
+  } catch (ex) {
+    alert('다음 맵 사용 권한을 초과했습니다.');
+  }
+  
+
 }
 
 
@@ -184,7 +193,14 @@ function transCoordAsync() {
       var wtmX = poiList[i].LATITUDE;
       var wtmY = poiList[i].LONGITUDE;
       //console.log(wtmX + ':' + wtmY);
-      var geocoder = new daum.maps.services.Geocoder();
+      var geocoder = null;
+      try {
+        geocoder = new daum.maps.services.Geocoder();
+      } catch (ex) {
+        alert('다음 맵 사용 권한을 초과했습니다.');
+      }
+      
+      alert('좌표 체계를 변환하여 지도에 표기하는 중입니다... 시간이 오래 걸릴 수 있습니다.');
       geocoder.transCoord(wtmX,
                           wtmY,
                           daum.maps.services.Coords.WTM, // 변환을 위해 입력한 좌표계 입니다
