@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0181)https://main-dot-datalab-dot-datalab-playground-1335.appspot.com/nbconvert/html/TensorFlow%20Machine%20Learning%20with%20Financial%20Data%20on%20Google%20Cloud%20Platform.KOR.ipynb# -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes"/>
 <title>TensorFlow Machine Learning with Financial Data on Google Cloud Platform.KOR</title>
 
 <script src="./TensorFlow Machine Learning with Financial Data on Google Cloud Platform.KOR_files/require.min.js"></script>
@@ -13142,7 +13142,7 @@ code {
 <li><a href="https://cloud.google.com/docs/overview/">프로젝트 생성</a></li>
 <li><a href="https://console.developers.google.com/billing">프로젝트 비용 청구 활성화</a>.</li>
 <li><a href="https://cloud.google.com/datalab/getting-started">클라우드 데이터랩 수행</a></li>
-<li>이 노트북은 클라우드 데이터랩 배포판의 'notebooks' 디렉토리에 포함되어 있습니다. 단순히 이 노트북을 열고 수행하기 바랍니다.</li>
+<li>이 노트북은 클라우드 데이터랩 배포판의 'notebooks' 디렉토리에 포함되어 있습니다. 이 노트북을 열고 단지 수행하면 됩니다.</li>
 </ul>
 
 </div>
@@ -15283,8 +15283,7 @@ Name: snp_0, dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Define some metrics here to evaluate the models.
-모델을 평가하기 위한 몇 가지 지표(metric)을 정의합니다.</p>
+<p>모델을 평가하기 위한 몇 가지 지표(metric)을 정의합니다.</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Precision_and_recall#Precision">Precision</a> -  분류기가 어떤 샘플(sample)의 틀린 값을 맞는 값으로 인식(label)하지 않을 능력</li>
 <li><a href="https://en.wikipedia.org/wiki/Precision_and_recall#Recall">Recall</a> - 분류기가 맞는 모든 샘플을 찾아낼 수 있을 능력</li>
@@ -15771,12 +15770,10 @@ Accuracy =  0.722222222222
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>여러분은 지금까지 방대한 내용을 다뤘습니다. 5년 간 축적된 금융 시계열 데이터를 얻어와서 데이터를 보다 적당한 형태로 변경했습니다. 탐색적 데이터 분석을 통해 데이터를 탐험하고 시각화 했으며 기계 학습 모델과 관련해 필요한 피처에 대해 결정했습니다. 여러분은 이 피처들을 가공해서 텐서플로우의 이진 분류기를 만들었고 성능을 분석했습니다. 또한 2개의 은닉층으로 이뤄진 피드 포워드 신경망을 텐서플로우로 만들어 성능을 분석했습니다.</p>
-<p>How did the technology fare? It should take most people 1.5 to 3 hours to extract the juice from this solution, and none of that time is spent waiting for infrastructure or software; it's spent reading and thinking. In many organizations, it can take anywhere from days to months to do this sort of data analysis, depending on whether you need to procure any hardware. And you didn't need to do anything with infrastructure or additional software. Rather, you used a web-based console to direct GCP to set up systems on your behalf, which it did—fully managed, maintained, and supported—freeing you up to spend your time analyzing.</p>
 <p>이 기술에 얼마나 비용이 들었을까요? 대부분의 사람들이 이 솔루션으로부터 주스를 추출하는데 한시간 반에서 세 시간이 걸리고 이 시간에서 인프라나 소프트웨어 때문에 대기하는 시간은 거의 없습니다; 다만, 읽고 생각하는데 쓴 시간들이죠. 많은 조직 중 이런 종류의 데이터 분석을 하는데 수 일부터 수 개월이 걸리는 곳도 있는데 특정 하드웨어를 마련하는게 필요한지에 따라 다릅니다. 그리고 여러분은 인프라나 추가 소프트웨어에 대해 어떤 것도 할 필요가 없습니다. 대신에 여러분은 GCP에 직접 연결된 웹 기반 콘솔을 사용해 편의에 따라 시스템을 셋업하면 되는데 완벽히 관리되고 운영되며 분석하는데만 시간을 쓸 수 있도록 해줍니다.
 (<em>아, 역시 광고는 이렇게 위대한 겁니다</em>)</p>
-<p>It was also cost effective. If you took your time with this solution and spent three hours to go through it, the cost would be a few pennies.</p>
-<p>게다가 비용 대비 고효율입니다. 이 솔루션에 시간을 들인다면 3시간으로 해낼 수 있으며 비용도 몇 페니에 불과할 겁니다.</p>
-<p>(<em>아래는 미래를 위해 남겨두렵니다</em>)</p>
+<p>게다가 비용 대비 고효율입니다. 이 솔루션에 시간을 들인다면 3시간으로 해낼 수 있으며 비용도 몇 푼에 불과할 겁니다.</p>
+<p>(<em>아래는 미래를 위해 남겨두렵니다. 절대 귀찮아서 그런겁니다.</em>)</p>
 <p>Cloud Datalab worked admirably, too. iPython/Jupyter has always been a great platform for interactive, iterative work and a fully-managed version of that platform on GCP, with connectors to other GCP technologies such as BigQuery and Google Cloud Storage, is a force multiplier for your analysis needs.  If you haven't used iPython before, this solution might have been eye opening, for you. If you're already familiar with iPython, then you'll love the connectors to other GCP technologies.</p>
 <p>Of course, R and Matlab are popular tools in machine learning, and we've made no mention either in this solution. Neither R nor Matlab are available as managed services on GCP. Both can be hosted in GCP and accessed through a cloud-friendly, web frontend.</p>
 <p>TensorFlow is a special piece of technology. It is expressive, performs well, and comes with the weight of Google's machine learning history and expertise to back it up and support it. We've only scratched the surface, but you can already see that within a handful of lines of code we've been able to write two models. Neither of them is cutting edge, by design, but neither of them is trivial either. With some additional tuning they would suit a whole spectrum of machine learning tasks.</p>
