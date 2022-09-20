@@ -18,7 +18,7 @@
     }
 
     .node text {
-      pointer-events: none;
+      pointer-events: auto;
       font: sans-serif;
     }
 
@@ -40,7 +40,7 @@ var svg = d3.select("body").append("svg")
     
 var force = d3.layout.force()
     .gravity(.06)
-    .distance(1000)
+    .distance(900)
     .charge(-50)
     .size([width, height]);
 
