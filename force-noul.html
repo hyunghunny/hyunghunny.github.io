@@ -28,7 +28,8 @@
 <div id="chart" class="box"></div>
 
 <script>
-var size_factor = 10;
+var size_factor = 5;
+var font_factor = 10;
 var width = window.innerWidth || document.body.clientWidth,
     height = window.innerHeight || document.body.clientHeight,
     fill = d3.scale.category20() //scaleOrdinal(d3.schemeCategory20);
@@ -71,7 +72,7 @@ d3.json("force3.json", function(json) {
   node.append("text")
       .attr("dx", 12)
       .attr("dy", ".35em")
-      .attr("font-size", function(d) { var size = d.size * size_factor; return size.toString() +"px"; })
+      .attr("font-size", function(d) { var size = d.size * font_factor; return size.toString() +"px"; })
       .text(function(d) { return d.id });
       //.text(function(d) { return d.id + d.rank });
 
