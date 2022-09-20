@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Force-Directed Layout</title>
+    <title>Noul-Coin Networks</title>
     <script src="https://d3js.org/d3.v2.min.js"></script>
     <style>
 
@@ -21,8 +21,8 @@
 
 <script>
 
-var width = window.innerWidth - 20 || document.body.clientWidth - 20,
-    height = window.innerHeight - 20 || document.body.clientHeight - 20,
+var width = window.innerWidth - 10 || document.body.clientWidth - 10,
+    height = window.innerHeight - 10 || document.body.clientHeight - 10,
     fill = d3.scale.category20() //scaleOrdinal(d3.schemeCategory20);
 
 var svg = d3.select("body").append("svg")
@@ -39,7 +39,7 @@ d3.json("force3.json", function(json) {
   force
       .nodes(json.nodes)
       .links(json.links)
-      .linkDistance(function(d) { return (300.0 / (Math.sqrt(d.weight)+1)); })
+      .linkDistance(function(d) { return (500.0 / (Math.sqrt(d.weight)+1)); })
       .start();
 
   var link = svg.selectAll(".link")
@@ -61,8 +61,8 @@ d3.json("force3.json", function(json) {
       .style("fill", function(d) { return color(d.id == "me" ? 1 : 2); });
 
   node.append("text")
-      .attr("dx", 12)
-      .attr("dy", ".35em")
+      .attr("dx", 24)
+      .attr("dy", ".70em")
       .attr("font-size", function(d) { var size = d.size; return size.toString() +"px"; })
       .text(function(d) { return d.id });
       //.text(function(d) { return d.id + d.rank });
