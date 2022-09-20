@@ -29,7 +29,7 @@
 <div id="chart" class="box"></div>
 
 <script>
-
+var size_factor = 5;
 var width = window.innerWidth || document.body.clientWidth,
     height = window.innerHeight || document.body.clientHeight,
     fill = d3.scale.category20() //scaleOrdinal(d3.schemeCategory20);
@@ -66,13 +66,13 @@ d3.json("force3.json", function(json) {
 
   node.append("circle")
       //.attr("r", 5)
-      .attr("r", function(d) { return d.size;})
+      .attr("r", function(d) { return d.size * size_factor;})
       .style("fill", function(d) { return color(d.id == "me" ? 1 : 2); });
 
   node.append("text")
       .attr("dx", 24)
       .attr("dy", ".70em")
-      .attr("font-size", function(d) { var size = d.size; return size.toString() +"px"; })
+      .attr("font-size", function(d) { var size = d.size * size_factor; return size.toString() +"px"; })
       .text(function(d) { return d.id });
       //.text(function(d) { return d.id + d.rank });
 
