@@ -25,10 +25,10 @@
     </style>
   </head>
   <body>
-<div id="chart"></div>
+<div id="chart" class="box"></div>
 
 <script>
-var size_factor = 5;
+var size_factor = 10;
 var width = window.innerWidth || document.body.clientWidth,
     height = window.innerHeight || document.body.clientHeight,
     fill = d3.scale.category20() //scaleOrdinal(d3.schemeCategory20);
@@ -38,8 +38,8 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
     
 var force = d3.layout.force()
-    .gravity(.05)
-    .distance(150)
+    .gravity(.025)
+    .distance(300)
     .charge(-100)
     .size([width, height]);
 
