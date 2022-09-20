@@ -23,7 +23,7 @@
 
 var width = window.innerWidth - 20 || document.body.clientWidth - 20,
     height = window.innerHeight - 20 || document.body.clientHeight - 20,
-    fill = d3.schemeCategory20();
+    fill = d3.scaleOrdinal(d3.schemeCategory20);
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
